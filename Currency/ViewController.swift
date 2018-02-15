@@ -34,15 +34,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var usdValueLabel: UILabel!
     @IBOutlet weak var usdFlagLabel: UILabel!
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         // print("currencyDict has \(self.currencyDict.count) entries")
         
         // create currency dictionary
+        self.baseTextField.keyboardType = UIKeyboardType.decimalPad
         self.createCurrencyDictionary()
         
         // get latest currency values
@@ -96,6 +94,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    @IBAction func refreshCurrencies(_ sender: UIButton) {
+        print("updated")
+        getConversionTable()
+    }
+    
+    
     func getConversionTable() {
         //var result = "<NOTHING>"
         
@@ -114,11 +118,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
             indicator.stopAnimating()
             
             if error == nil{
-                //print(response!)
+                print(response!)
                 
                 do {
                     let jsonDict = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String:Any]
-                    //print(jsonDict)
+                    print(jsonDict)
                     
                     if let ratesData = jsonDict["rates"] as? NSDictionary {
                         //print(ratesData)
