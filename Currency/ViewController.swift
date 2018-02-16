@@ -60,6 +60,42 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var nokValueLabel: UILabel!
     @IBOutlet weak var nokFlagLabel: UILabel!
     
+//    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+//        activeField = textField
+//        lastOffset = self.scrollView.contentOffset
+//        return true
+//    }
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        activeField?.resignFirstResponder()
+//        activeField = nil
+//        return true
+//    }
+//    
+//    func keyboardWillShow(notification: NSNotification) {
+//        if keyboardHeight != nil {
+//            return
+//        }
+//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+//            keyboardHeight = keyboardSize.height
+//            // so increase contentView's height by keyboard height
+//            UIView.animate(withDuration: 0.3, animations: {
+//                self.constraintContentHeight.constant += self.keyboardHeight
+//            })
+//            // move if keyboard hide input field
+//            let distanceToBottom = self.scrollView.frame.size.height - (activeField?.frame.origin.y)! - (activeField?.frame.size.height)!
+//            let collapseSpace = keyboardHeight - distanceToBottom
+//            if collapseSpace < 0 {
+//                // no collapse
+//                return
+//            }
+//            // set new offset for scroll view
+//            UIView.animate(withDuration: 0.3, animations: {
+//                // scroll to the position above keyboard 10 points
+//                self.scrollView.contentOffset = CGPoint(x: self.lastOffset.x, y: collapseSpace + 10)
+//            })
+//        }
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -71,6 +107,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         // get latest currency values
         getConversionTable()
+        
         convertValue = 1
         
         // set up base currency screen items
@@ -111,7 +148,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func displayCurrencyInfo() {
-        // GBP
         if let c = currencyDict["GBP"]{
             gbpSymbolLabel.text = c.symbol
             gbpValueLabel.text = String(format: "%.02f", c.rate)
@@ -238,6 +274,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         }
                         self.lastUpdatedDate = Date()
                         self.lastUpdatedDateLabel.text = self.dateformatter.string(from: self.lastUpdatedDate)
+                        self.convert(self)
                     }
                 }
                 catch let error as NSError{
