@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     //MARK Model holders
     var currencyDict:Dictionary = [String:Currency]()
@@ -19,9 +19,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var convertValue:Double = 0
     
     let dateformatter = DateFormatter()
-    
-    //MARK Outlets
-    //@IBOutlet weak var convertedLabel: UILabel!
     
     @IBOutlet weak var baseSymbol: UILabel!
     @IBOutlet weak var baseTextField: UITextField!
@@ -63,8 +60,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var topScrollView: UIScrollView!
     
+    var data: [String] = [String]()
+    @IBOutlet weak var basePicker: UIPickerView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        data = ["🇪🇺","🇬🇧","🇺🇸","🇵🇱","🇦🇺","🇨🇦","🇨🇭","🇹🇷","🇳🇴"]
+        self.basePicker.delegate = self
+        self.basePicker.dataSource = self
         // Do any additional setup after loading the view, typically from a nib.
         NotificationCenter.default.addObserver(
             self,selector: #selector(keyboardWillShowForResizing),
@@ -85,7 +88,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // set up base currency screen items
         baseTextField.text = String(format: "%.02f", baseCurrency.rate)
         baseSymbol.text = baseCurrency.symbol
-        baseFlag.text = baseCurrency.flag
         
         // set up last updated date
         dateformatter.dateFormat = "dd/MM/yyyy hh:mm a"
@@ -94,13 +96,38 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // display currency info
         self.displayCurrencyInfo()
         
-        
         // setup view mover
         baseTextField.delegate = self
         
         self.convert(self)
         
         self.addDoneButtonOnKeyboard()
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    // The number of rows of data
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return data.count
+    }
+    // The data to return for the row and component (column), that's being  passed in .
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        // Complex way
+        //return data[component][row]
+        // Simple way
+        return data[row]
+    }
+    
+    // Catpure the picker view selection. At the moment that he/ she selects something, then it's passed to this func
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+        alert.message = "Your selection is "+data[row]
+        alert.title = "Selection"
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -188,7 +215,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func createCurrencyDictionary() {
@@ -250,7 +276,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func refreshCurrencies(_ sender: UIButton) {
         customActivityIndicatory(self.view, startAnimate: true)
-        //getConversionTable()
         getConvertionRates()
         customActivityIndicatory(self.view, startAnimate: false)
     }
@@ -280,7 +305,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 print("Error: did not receive data")
                 return
             }
-            // parse the result as JSON, since that's what the API provides
+            // parse the result as JSON
             do {
                 guard let responseObject = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: AnyObject] else {
                     print("error trying to convert data to JSON")
@@ -293,12 +318,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     return
                 }
                 for rate in rates{
-                    //print("#####")
                     let name = String(describing: rate.key)
-                    print(name)
                     let rate = (rate.value as? NSNumber)?.doubleValue
-                    //var symbol:String
-                    //var flag:String
                     
                     switch(name){
                     case "USD":
@@ -334,7 +355,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         c.rate = rate!
                         self.currencyDict["NOK"] = c
                     default:
-                        print()
+                        ()
                     }
                     
                     /*
@@ -355,10 +376,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
             
         }
-        
         task.resume()
-        
-        
     }
     
     @IBAction func convert(_ sender: Any) {
@@ -398,9 +416,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 resultNOK = convertValue * nok.rate
             }
         }
-        //GBP
-        
-        //convertedLabel.text = String(describing: resultGBP)
         
         gbpValueLabel.text = String(format: "%.02f", resultGBP)
         usdValueLabel.text = String(format: "%.02f", resultUSD)
@@ -412,15 +427,5 @@ class ViewController: UIViewController, UITextFieldDelegate {
         nokValueLabel.text = String(format: "%.02f", resultNOK)
 
     }
-    
-    /*
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     
-     }
-     */
-    
-    
 }
 

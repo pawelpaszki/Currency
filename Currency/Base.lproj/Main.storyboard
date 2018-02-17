@@ -294,23 +294,24 @@
                                                     <action selector="convert:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aS4-vr-0Va"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FLAG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3W-ci-iTU">
-                                                <rect key="frame" x="277" y="20" width="61" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uim-oE-Gsq">
+                                                <rect key="frame" x="277" y="0.0" width="70" height="70"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="70" id="ixs-co-d6M"/>
+                                                    <constraint firstAttribute="height" constant="70" id="jbw-d2-NcZ"/>
+                                                </constraints>
+                                            </pickerView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="YSD-ti-Knz" firstAttribute="top" secondItem="2DM-84-dyW" secondAttribute="top" constant="20" id="2gq-mb-eJy"/>
-                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="b3W-ci-iTU" secondAttribute="trailing" id="FzP-s1-5ik"/>
                                             <constraint firstAttribute="bottom" secondItem="Chd-YC-XQl" secondAttribute="bottom" constant="20" id="GUV-Dl-SP5"/>
-                                            <constraint firstItem="b3W-ci-iTU" firstAttribute="leading" secondItem="qWU-HA-lfi" secondAttribute="trailing" constant="20" id="Jdi-pJ-Jf2"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uim-oE-Gsq" secondAttribute="trailing" constant="67" id="LvG-uc-TYx"/>
                                             <constraint firstAttribute="bottom" secondItem="Df0-A5-yr7" secondAttribute="bottom" constant="20" id="RKt-T4-lu3"/>
-                                            <constraint firstItem="b3W-ci-iTU" firstAttribute="top" secondItem="2DM-84-dyW" secondAttribute="top" constant="20" id="W0c-lr-mzO"/>
+                                            <constraint firstItem="uim-oE-Gsq" firstAttribute="top" secondItem="2DM-84-dyW" secondAttribute="top" id="WYA-0K-D1W"/>
                                             <constraint firstItem="qWU-HA-lfi" firstAttribute="leading" secondItem="YSD-ti-Knz" secondAttribute="trailing" constant="20" id="aPu-XH-E9c"/>
                                             <constraint firstItem="qWU-HA-lfi" firstAttribute="top" secondItem="2DM-84-dyW" secondAttribute="top" constant="20" id="b1X-rq-SA3"/>
+                                            <constraint firstItem="uim-oE-Gsq" firstAttribute="leading" secondItem="qWU-HA-lfi" secondAttribute="trailing" constant="20" id="d1P-cv-fwv"/>
                                             <constraint firstItem="qWU-HA-lfi" firstAttribute="centerX" secondItem="2DM-84-dyW" secondAttribute="centerX" id="dpI-hw-QCS"/>
                                             <constraint firstItem="YSD-ti-Knz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="2DM-84-dyW" secondAttribute="leading" id="pnm-GF-NOR"/>
                                             <constraint firstItem="Df0-A5-yr7" firstAttribute="centerX" secondItem="2DM-84-dyW" secondAttribute="centerX" id="qc2-VV-fOy"/>
@@ -348,7 +349,7 @@
                         <outlet property="audFlagLabel" destination="ByY-9e-Tjg" id="T9Q-xK-8Ih"/>
                         <outlet property="audSymbolLabel" destination="NSV-Jz-tPh" id="2GI-6c-rT1"/>
                         <outlet property="audValueLabel" destination="PxL-CH-DcD" id="gEn-Kn-GM3"/>
-                        <outlet property="baseFlag" destination="b3W-ci-iTU" id="msc-Sk-aeX"/>
+                        <outlet property="basePicker" destination="uim-oE-Gsq" id="uLp-vO-3Yg"/>
                         <outlet property="baseSymbol" destination="YSD-ti-Knz" id="VQ0-hD-dgB"/>
                         <outlet property="baseTextField" destination="qWU-HA-lfi" id="V1D-Ce-yyK"/>
                         <outlet property="bottomView" destination="2DM-84-dyW" id="ws3-DL-Wc4"/>
