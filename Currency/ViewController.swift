@@ -78,7 +78,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.createCurrencyDictionary()
         
         // get latest currency values
-        getConversionTable()
+        getConvertionRates()
         
         convertValue = 1
         
@@ -250,101 +250,113 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func refreshCurrencies(_ sender: UIButton) {
         customActivityIndicatory(self.view, startAnimate: true)
-        getConversionTable()
+        //getConversionTable()
+        getConvertionRates()
         customActivityIndicatory(self.view, startAnimate: false)
     }
     
-    
-    func getConversionTable() {
-        //var result = "<NOTHING>"
+    func getConvertionRates() {
+        let endpoint: String = "https://api.fixer.io/latest"
+        guard let url = URL(string: endpoint) else {
+            print("Error: cannot create URL")
+            return
+        }
+        let urlRequest = URLRequest(url: url)
         
-        let urlStr:String = "https://api.fixer.io/latest"
+        // set up the session
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
         
-        var request = URLRequest(url: URL(string: urlStr)!)
-        request.httpMethod = "GET"
-        
-        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-        indicator.center = view.center
-        view.addSubview(indicator)
-        indicator.startAnimating()
-        
-        NSURLConnection.sendAsynchronousRequest(request, queue: OperationQueue.main) { response, data, error in
-            
-            indicator.stopAnimating()
-            
-            if error == nil{
-                print(response!)
-                
-                do {
-                    let jsonDict = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String:Any]
-                    print(jsonDict)
-                    
-                    if let ratesData = jsonDict["rates"] as? NSDictionary {
-                        //print(ratesData)
-                        for rate in ratesData{
-                            //print("#####")
-                            let name = String(describing: rate.key)
-                            let rate = (rate.value as? NSNumber)?.doubleValue
-                            //var symbol:String
-                            //var flag:String
-                            
-                            switch(name){
-                            case "USD":
-                                let c:Currency  = self.currencyDict["USD"]!
-                                c.rate = rate!
-                                self.currencyDict["USD"] = c
-                            case "GBP":
-                                let c:Currency  = self.currencyDict["GBP"]!
-                                c.rate = rate!
-                                self.currencyDict["GBP"] = c
-                            case "PLN":
-                                let c:Currency  = self.currencyDict["PLN"]!
-                                c.rate = rate!
-                                self.currencyDict["PLN"] = c
-                            case "AUD":
-                                let c:Currency  = self.currencyDict["AUD"]!
-                                c.rate = rate!
-                                self.currencyDict["AUD"] = c
-                            case "CAD":
-                                let c:Currency  = self.currencyDict["CAD"]!
-                                c.rate = rate!
-                                self.currencyDict["CAD"] = c
-                            case "CHF":
-                                let c:Currency  = self.currencyDict["CHF"]!
-                                c.rate = rate!
-                                self.currencyDict["CHF"] = c
-                            case "TRY":
-                                let c:Currency  = self.currencyDict["TRY"]!
-                                c.rate = rate!
-                                self.currencyDict["TRY"] = c
-                            case "NOK":
-                                let c:Currency  = self.currencyDict["NOK"]!
-                                c.rate = rate!
-                                self.currencyDict["NOK"] = c
-                            default:
-                                print("Ignoring currency: \(String(describing: rate))")
-                            }
-                            
-                            /*
-                             let c:Currency = Currency(name: name, rate: rate!, flag: flag, symbol: symbol)!
-                             self.currencyDict[name] = c
-                             */
-                        }
-                        self.lastUpdatedDate = Date()
-                        self.lastUpdatedDateLabel.text = self.dateformatter.string(from: self.lastUpdatedDate)
-                        self.baseTextField.text = "1"
-                        self.convert(self)
-                    }
-                }
-                catch let error as NSError{
-                    print(error)
-                }
+        // make the request
+        let task = session.dataTask(with: urlRequest) {
+            (data, response, error) in
+            // check for any errors
+            guard error == nil else {
+                print("Error calling GET on " + endpoint)
+                return
             }
-            else{
-                print("Error")
+            // make sure we got data
+            guard let responseData = data else {
+                print("Error: did not receive data")
+                return
+            }
+            // parse the result as JSON, since that's what the API provides
+            do {
+                guard let responseObject = try JSONSerialization.jsonObject(with: responseData, options: []) as? [String: AnyObject] else {
+                    print("error trying to convert data to JSON")
+                    return
+                }
+                
+                // get rates
+                guard let rates = responseObject["rates"] as? [String: AnyObject] else {
+                    print("Could not get todo title from JSON")
+                    return
+                }
+                for rate in rates{
+                    //print("#####")
+                    let name = String(describing: rate.key)
+                    print(name)
+                    let rate = (rate.value as? NSNumber)?.doubleValue
+                    //var symbol:String
+                    //var flag:String
+                    
+                    switch(name){
+                    case "USD":
+                        let c:Currency  = self.currencyDict["USD"]!
+                        c.rate = rate!
+                        self.currencyDict["USD"] = c
+                    case "GBP":
+                        let c:Currency  = self.currencyDict["GBP"]!
+                        c.rate = rate!
+                        self.currencyDict["GBP"] = c
+                    case "PLN":
+                        let c:Currency  = self.currencyDict["PLN"]!
+                        c.rate = rate!
+                        self.currencyDict["PLN"] = c
+                    case "AUD":
+                        let c:Currency  = self.currencyDict["AUD"]!
+                        c.rate = rate!
+                        self.currencyDict["AUD"] = c
+                    case "CAD":
+                        let c:Currency  = self.currencyDict["CAD"]!
+                        c.rate = rate!
+                        self.currencyDict["CAD"] = c
+                    case "CHF":
+                        let c:Currency  = self.currencyDict["CHF"]!
+                        c.rate = rate!
+                        self.currencyDict["CHF"] = c
+                    case "TRY":
+                        let c:Currency  = self.currencyDict["TRY"]!
+                        c.rate = rate!
+                        self.currencyDict["TRY"] = c
+                    case "NOK":
+                        let c:Currency  = self.currencyDict["NOK"]!
+                        c.rate = rate!
+                        self.currencyDict["NOK"] = c
+                    default:
+                        print()
+                    }
+                    
+                    /*
+                     let c:Currency = Currency(name: name, rate: rate!, flag: flag, symbol: symbol)!
+                     self.currencyDict[name] = c
+                     */
+                }
+                
+            } catch  {
+                print("error trying to convert data to JSON")
+                return
+            }
+            DispatchQueue.main.async {
+                self.lastUpdatedDate = Date()
+                self.lastUpdatedDateLabel.text = self.dateformatter.string(from: self.lastUpdatedDate)
+                self.baseTextField.text = "1"
+                self.convert(self)
             }
             
         }
+        
+        task.resume()
         
         
     }
