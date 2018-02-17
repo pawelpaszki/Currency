@@ -352,6 +352,7 @@
                         <outlet property="baseFlag" destination="b3W-ci-iTU" id="msc-Sk-aeX"/>
                         <outlet property="baseSymbol" destination="YSD-ti-Knz" id="VQ0-hD-dgB"/>
                         <outlet property="baseTextField" destination="qWU-HA-lfi" id="V1D-Ce-yyK"/>
+                        <outlet property="bottomView" destination="2DM-84-dyW" id="ws3-DL-Wc4"/>
                         <outlet property="cadFlagLabel" destination="6el-nU-b9F" id="hd0-5R-T6r"/>
                         <outlet property="cadSymbolLabel" destination="0ZN-oJ-xP2" id="d24-hS-Db7"/>
                         <outlet property="cadValueLabel" destination="YMr-bk-LwX" id="KHr-sJ-3UL"/>
@@ -368,6 +369,7 @@
                         <outlet property="plnFlagLabel" destination="t17-57-VUh" id="Qzf-SX-h1J"/>
                         <outlet property="plnSymbolLabel" destination="y4j-Bj-11G" id="EYi-9Y-yPh"/>
                         <outlet property="plnValueLabel" destination="QhO-eY-FL6" id="oRT-fw-1eZ"/>
+                        <outlet property="topScrollView" destination="jbW-h3-hM9" id="zeM-js-I39"/>
                         <outlet property="tryFlagLabel" destination="pfu-Cn-imy" id="Wpo-hc-HbX"/>
                         <outlet property="trySymbolLabel" destination="gBs-fk-Rha" id="84n-yb-dUK"/>
                         <outlet property="tryValueLabel" destination="FcM-R4-FO7" id="U9o-co-qAF"/>

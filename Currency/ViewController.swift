@@ -60,46 +60,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var nokValueLabel: UILabel!
     @IBOutlet weak var nokFlagLabel: UILabel!
     
-//    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-//        activeField = textField
-//        lastOffset = self.scrollView.contentOffset
-//        return true
-//    }
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        activeField?.resignFirstResponder()
-//        activeField = nil
-//        return true
-//    }
-//    
-//    func keyboardWillShow(notification: NSNotification) {
-//        if keyboardHeight != nil {
-//            return
-//        }
-//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-//            keyboardHeight = keyboardSize.height
-//            // so increase contentView's height by keyboard height
-//            UIView.animate(withDuration: 0.3, animations: {
-//                self.constraintContentHeight.constant += self.keyboardHeight
-//            })
-//            // move if keyboard hide input field
-//            let distanceToBottom = self.scrollView.frame.size.height - (activeField?.frame.origin.y)! - (activeField?.frame.size.height)!
-//            let collapseSpace = keyboardHeight - distanceToBottom
-//            if collapseSpace < 0 {
-//                // no collapse
-//                return
-//            }
-//            // set new offset for scroll view
-//            UIView.animate(withDuration: 0.3, animations: {
-//                // scroll to the position above keyboard 10 points
-//                self.scrollView.contentOffset = CGPoint(x: self.lastOffset.x, y: collapseSpace + 10)
-//            })
-//        }
-//    }
+    @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var topScrollView: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        // print("currencyDict has \(self.currencyDict.count) entries")
+        NotificationCenter.default.addObserver(
+            self,selector: #selector(keyboardWillShowForResizing),
+            name:NSNotification.Name.UIKeyboardDidShow,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,selector: #selector(keyboardWillHideForResizing),name:NSNotification.Name.UIKeyboardWillHide,
+                                               object: nil)
+        
         
         // create currency dictionary
         self.baseTextField.keyboardType = UIKeyboardType.decimalPad
@@ -127,6 +100,50 @@ class ViewController: UIViewController, UITextFieldDelegate {
         baseTextField.delegate = self
         
         self.convert(self)
+        
+        self.addDoneButtonOnKeyboard()
+    }
+    
+    
+    @objc
+    func keyboardWillShowForResizing(notification: Notification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+            let window = self.view.window?.frame {
+            self.view.frame = CGRect(x: self.view.frame.origin.x,
+                                     y: self.view.frame.origin.y,
+                                     width: self.view.frame.width,
+                                     height: window.origin.y + window.height - keyboardSize.height)
+        }
+    }
+    
+    @objc
+    func keyboardWillHideForResizing(notification: Notification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let viewHeight = self.view.frame.height
+            self.view.frame = CGRect(x: self.view.frame.origin.x,
+                                     y: self.view.frame.origin.y,
+                                     width: self.view.frame.width,
+                                     height: viewHeight + keyboardSize.height)
+        }
+    }
+    
+    func addDoneButtonOnKeyboard() {
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        doneToolbar.barStyle = .default
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneButtonAction))
+        
+        let items = [flexSpace, done]
+        doneToolbar.items = items
+        doneToolbar.sizeToFit()
+        
+        self.baseTextField.inputAccessoryView = doneToolbar
+    }
+    
+    @objc
+    func doneButtonAction() {
+        self.baseTextField.endEditing(true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -134,7 +151,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func createCurrencyDictionary(){
+    func createCurrencyDictionary() {
         //let c:Currency = Currency(name: name, rate: rate!, flag: flag, symbol: symbol)!
         //self.currencyDict[name] = c
         currencyDict["GBP"] = Currency(name:"GBP", rate:1, flag:"🇬🇧", symbol: "£")
