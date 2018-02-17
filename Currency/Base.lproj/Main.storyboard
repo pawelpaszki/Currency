@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ofz-bQ-OOF">
-                                <rect key="frame" x="101.33333333333333" y="20" width="211.66666666666669" height="20.333333333333329"/>
+                                <rect key="frame" x="101.33333333333333" y="40" width="211.66666666666669" height="20.333333333333329"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Updated:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IiB-QZ-CHS">
                                         <rect key="frame" x="0.0" y="0.0" width="108" height="20.333333333333332"/>
@@ -332,13 +332,12 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="jbW-h3-hM9" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-118" id="1x1-yz-Ucf"/>
-                            <constraint firstItem="jbW-h3-hM9" firstAttribute="top" secondItem="IiB-QZ-CHS" secondAttribute="bottom" constant="40" id="5uU-FA-3gv"/>
+                            <constraint firstItem="jbW-h3-hM9" firstAttribute="top" secondItem="IiB-QZ-CHS" secondAttribute="bottom" constant="20" id="5uU-FA-3gv"/>
                             <constraint firstItem="jbW-h3-hM9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8Ng-Mc-ylV"/>
                             <constraint firstItem="iBN-ih-IEU" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="A72-ke-PfK"/>
-                            <constraint firstItem="ofz-bQ-OOF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="BBn-tg-jsx"/>
+                            <constraint firstItem="ofz-bQ-OOF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="BBn-tg-jsx"/>
                             <constraint firstItem="iBN-ih-IEU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DpW-Ib-TPD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jbW-h3-hM9" secondAttribute="trailing" id="WzX-9q-8L3"/>
-                            <constraint firstItem="ofz-bQ-OOF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="cf8-bo-k5f"/>
                             <constraint firstItem="ofz-bQ-OOF" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ein-Kg-imB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iBN-ih-IEU" secondAttribute="trailing" id="ho9-cs-he1"/>
                             <constraint firstItem="iBN-ih-IEU" firstAttribute="top" secondItem="jbW-h3-hM9" secondAttribute="bottom" constant="8" id="uoN-O6-9ff"/>

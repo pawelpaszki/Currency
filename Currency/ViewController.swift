@@ -73,7 +73,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self,selector: #selector(keyboardWillHideForResizing),name:NSNotification.Name.UIKeyboardWillHide,
                                                object: nil)
         
-        
         // create currency dictionary
         self.baseTextField.keyboardType = UIKeyboardType.decimalPad
         self.createCurrencyDictionary()
@@ -104,6 +103,46 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.addDoneButtonOnKeyboard()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @discardableResult
+    func customActivityIndicatory(_ viewContainer: UIView, startAnimate:Bool? = true) -> UIActivityIndicatorView {
+        let mainContainer: UIView = UIView(frame: viewContainer.frame)
+        mainContainer.center = viewContainer.center
+        mainContainer.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
+        mainContainer.alpha = 0.1
+        mainContainer.tag = 789456123
+        mainContainer.isUserInteractionEnabled = false
+        
+        let viewBackgroundLoading: UIView = UIView(frame: CGRect(x:0,y: 0,width: 80,height: 80))
+        viewBackgroundLoading.center = viewContainer.center
+        viewBackgroundLoading.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
+        viewBackgroundLoading.alpha = 0.8
+        viewBackgroundLoading.clipsToBounds = true
+        viewBackgroundLoading.layer.cornerRadius = 15
+        
+        let activityIndicatorView: UIActivityIndicatorView = UIActivityIndicatorView()
+        activityIndicatorView.frame = CGRect(x:0.0,y: 0.0,width: 40.0, height: 40.0)
+        activityIndicatorView.activityIndicatorViewStyle =
+            UIActivityIndicatorViewStyle.whiteLarge
+        activityIndicatorView.center = CGPoint(x: viewBackgroundLoading.frame.size.width / 2, y: viewBackgroundLoading.frame.size.height / 2)
+        if startAnimate!{
+            viewBackgroundLoading.addSubview(activityIndicatorView)
+            mainContainer.addSubview(viewBackgroundLoading)
+            viewContainer.addSubview(mainContainer)
+            activityIndicatorView.startAnimating()
+        }else{
+            for subview in viewContainer.subviews{
+                if subview.tag == 789456123{
+                    subview.removeFromSuperview()
+                }
+            }
+        }
+        return activityIndicatorView
+    }
+    
     
     @objc
     func keyboardWillShowForResizing(notification: Notification) {
@@ -113,6 +152,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                                      y: self.view.frame.origin.y,
                                      width: self.view.frame.width,
                                      height: window.origin.y + window.height - keyboardSize.height)
+            self.baseTextField.text = ""
         }
     }
     
@@ -209,8 +249,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func refreshCurrencies(_ sender: UIButton) {
-        print("updated")
+        customActivityIndicatory(self.view, startAnimate: true)
         getConversionTable()
+        customActivityIndicatory(self.view, startAnimate: false)
     }
     
     
@@ -291,6 +332,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         }
                         self.lastUpdatedDate = Date()
                         self.lastUpdatedDateLabel.text = self.dateformatter.string(from: self.lastUpdatedDate)
+                        self.baseTextField.text = "1"
                         self.convert(self)
                     }
                 }
@@ -303,6 +345,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
             
         }
+        
         
     }
     
