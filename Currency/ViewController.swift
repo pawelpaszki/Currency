@@ -20,48 +20,20 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     
     let dateformatter = DateFormatter()
     
+    @IBOutlet var symbolLabelCollection: [UILabel]!
+    @IBOutlet var valueLabelCollection: [UILabel]!
+    @IBOutlet var flagLabelCollection: [UILabel]!
+    
     @IBOutlet weak var baseSymbol: UILabel!
     @IBOutlet weak var baseTextField: UITextField!
-    @IBOutlet weak var baseFlag: UILabel!
     @IBOutlet weak var lastUpdatedDateLabel: UILabel!
-    
-    @IBOutlet weak var gbpSymbolLabel: UILabel!
-    @IBOutlet weak var gbpValueLabel: UILabel!
-    @IBOutlet weak var gbpFlagLabel: UILabel!
-    
-    @IBOutlet weak var usdSymbolLabel: UILabel!
-    @IBOutlet weak var usdValueLabel: UILabel!
-    @IBOutlet weak var usdFlagLabel: UILabel!
-    
-    @IBOutlet weak var plnSymbolLabel: UILabel!
-    @IBOutlet weak var plnValueLabel: UILabel!
-    @IBOutlet weak var plnFlagLabel: UILabel!
-    
-    @IBOutlet weak var audSymbolLabel: UILabel!
-    @IBOutlet weak var audValueLabel: UILabel!
-    @IBOutlet weak var audFlagLabel: UILabel!
-    
-    @IBOutlet weak var cadSymbolLabel: UILabel!
-    @IBOutlet weak var cadValueLabel: UILabel!
-    @IBOutlet weak var cadFlagLabel: UILabel!
-    
-    @IBOutlet weak var chfSymbolLabel: UILabel!
-    @IBOutlet weak var chfValueLabel: UILabel!
-    @IBOutlet weak var chfFlagLabel: UILabel!
-    
-    @IBOutlet weak var trySymbolLabel: UILabel!
-    @IBOutlet weak var tryValueLabel: UILabel!
-    @IBOutlet weak var tryFlagLabel: UILabel!
-    
-    @IBOutlet weak var nokSymbolLabel: UILabel!
-    @IBOutlet weak var nokValueLabel: UILabel!
-    @IBOutlet weak var nokFlagLabel: UILabel!
     
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var topScrollView: UIScrollView!
     
     var data: [String] = [String]()
     @IBOutlet weak var basePicker: UIPickerView!
+    var baseMultiplier: Double = 1.00
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,7 +72,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
         baseTextField.delegate = self
         
         self.convert(self)
-        
         self.addDoneButtonOnKeyboard()
     }
     
@@ -113,21 +84,31 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     }
     // The data to return for the row and component (column), that's being  passed in .
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        // Complex way
-        //return data[component][row]
-        // Simple way
         return data[row]
     }
     
     // Catpure the picker view selection. At the moment that he/ she selects something, then it's passed to this func
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
-        alert.message = "Your selection is "+data[row]
-        alert.title = "Selection"
-        
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-        
+        changeCurrencyBase()
+    }
+    
+    func changeCurrencyBase() {
+        let row = self.basePicker.selectedRow(inComponent: 0)
+        self.baseCurrency = self.currencyArray[row]
+        self.baseMultiplier = 1.00 / baseCurrency.rate
+        self.baseSymbol.text = self.baseCurrency.symbol
+        let convertValue = Double(self.baseTextField.text!)
+        for i in 0 ..< flagLabelCollection.count {
+            if row > i {
+                symbolLabelCollection[i].text = currencyArray[i].symbol
+                valueLabelCollection[i].text = String(format: "%.02f",currencyArray[i].rate * baseMultiplier * convertValue!)
+                flagLabelCollection[i].text = currencyArray[i].flag
+            } else {
+                symbolLabelCollection[i].text = currencyArray[i+1].symbol
+                valueLabelCollection[i].text = String(format: "%.02f",currencyArray[i+1].rate * baseMultiplier * convertValue!)
+                flagLabelCollection[i].text = currencyArray[i+1].flag
+            }
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -218,63 +199,39 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     }
     
     func createCurrencyDictionary() {
-        //let c:Currency = Currency(name: name, rate: rate!, flag: flag, symbol: symbol)!
-        //self.currencyDict[name] = c
-        currencyDict["GBP"] = Currency(name:"GBP", rate:1, flag:"🇬🇧", symbol: "£")
-        currencyDict["USD"] = Currency(name:"USD", rate:1, flag:"🇺🇸", symbol: "$")
-        currencyDict["PLN"] = Currency(name:"PLN", rate:1, flag:"🇵🇱", symbol: "zł")
-        currencyDict["AUD"] = Currency(name:"AUD", rate:1, flag:"🇦🇺", symbol: "A$")
-        currencyDict["CAD"] = Currency(name:"CAD", rate:1, flag:"🇨🇦", symbol: "C$")
-        currencyDict["CHF"] = Currency(name:"CHF", rate:1, flag:"🇨🇭", symbol: "CHf")
-        currencyDict["TRY"] = Currency(name:"TRY", rate:1, flag:"🇹🇷", symbol: "₺")
-        currencyDict["NOK"] = Currency(name:"NOK", rate:1, flag:"🇳🇴", symbol: "kr")
+        let currency1: Currency = Currency(name:"EUR", rate:1, flag:"🇪🇺", symbol:"€")!
+        currencyArray.append(currency1)
+        let currency2: Currency = Currency(name:"GBP", rate:1, flag:"🇬🇧", symbol: "£")!
+        currencyArray.append(currency2)
+        let currency3: Currency = Currency(name:"USD", rate:1, flag:"🇺🇸", symbol: "$")!
+        currencyArray.append(currency3)
+        let currency4: Currency = Currency(name:"PLN", rate:1, flag:"🇵🇱", symbol: "zł")!
+        currencyArray.append(currency4)
+        let currency5: Currency = Currency(name:"AUD", rate:1, flag:"🇦🇺", symbol: "A$")!
+        currencyArray.append(currency5)
+        let currency6: Currency = Currency(name:"CAD", rate:1, flag:"🇨🇦", symbol: "C$")!
+        currencyArray.append(currency6)
+        let currency7: Currency = Currency(name:"CHF", rate:1, flag:"🇨🇭", symbol: "CHf")!
+        currencyArray.append(currency7)
+        let currency8: Currency = Currency(name:"TRY", rate:1, flag:"🇹🇷", symbol: "₺")!
+        currencyArray.append(currency8)
+        let currency9: Currency = Currency(name:"NOK", rate:1, flag:"🇳🇴", symbol: "kr")!
+        currencyArray.append(currency9)
     }
     
     func displayCurrencyInfo() {
-        if let c = currencyDict["GBP"]{
-            gbpSymbolLabel.text = c.symbol
-            gbpValueLabel.text = String(format: "%.02f", c.rate)
-            gbpFlagLabel.text = c.flag
-        }
-        if let c = currencyDict["USD"]{
-            usdSymbolLabel.text = c.symbol
-            usdValueLabel.text = String(format: "%.02f", c.rate)
-            usdFlagLabel.text = c.flag
-        }
-        if let c = currencyDict["PLN"]{
-            plnSymbolLabel.text = c.symbol
-            plnValueLabel.text = String(format: "%.02f", c.rate)
-            plnFlagLabel.text = c.flag
-        }
-        if let c = currencyDict["AUD"]{
-            audSymbolLabel.text = c.symbol
-            audValueLabel.text = String(format: "%.02f", c.rate)
-            audFlagLabel.text = c.flag
-        }
-        if let c = currencyDict["CAD"]{
-            cadSymbolLabel.text = c.symbol
-            cadValueLabel.text = String(format: "%.02f", c.rate)
-            cadFlagLabel.text = c.flag
-        }
-        if let c = currencyDict["CHF"]{
-            chfSymbolLabel.text = c.symbol
-            chfValueLabel.text = String(format: "%.02f", c.rate)
-            chfFlagLabel.text = c.flag
-        }
-        if let c = currencyDict["TRY"]{
-            trySymbolLabel.text = c.symbol
-            tryValueLabel.text = String(format: "%.02f", c.rate)
-            tryFlagLabel.text = c.flag
-        }
-        if let c = currencyDict["NOK"]{
-            nokSymbolLabel.text = c.symbol
-            nokValueLabel.text = String(format: "%.02f", c.rate)
-            nokFlagLabel.text = c.flag
+        for i in 1 ..< currencyArray.count {
+            symbolLabelCollection[i-1].text = currencyArray[i].symbol
+            valueLabelCollection[i-1].text = String(format: "%.02f",currencyArray[i].rate)
+            flagLabelCollection[i-1].text = currencyArray[i].flag
         }
     }
     
     
     @IBAction func refreshCurrencies(_ sender: UIButton) {
+        self.baseTextField.text = "1"
+        self.basePicker.selectRow(0, inComponent: 0, animated: false)
+        changeCurrencyBase()
         customActivityIndicatory(self.view, startAnimate: true)
         getConvertionRates()
         customActivityIndicatory(self.view, startAnimate: false)
@@ -321,47 +278,17 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
                     let name = String(describing: rate.key)
                     let rate = (rate.value as? NSNumber)?.doubleValue
                     
-                    switch(name){
-                    case "USD":
-                        let c:Currency  = self.currencyDict["USD"]!
-                        c.rate = rate!
-                        self.currencyDict["USD"] = c
-                    case "GBP":
-                        let c:Currency  = self.currencyDict["GBP"]!
-                        c.rate = rate!
-                        self.currencyDict["GBP"] = c
-                    case "PLN":
-                        let c:Currency  = self.currencyDict["PLN"]!
-                        c.rate = rate!
-                        self.currencyDict["PLN"] = c
-                    case "AUD":
-                        let c:Currency  = self.currencyDict["AUD"]!
-                        c.rate = rate!
-                        self.currencyDict["AUD"] = c
-                    case "CAD":
-                        let c:Currency  = self.currencyDict["CAD"]!
-                        c.rate = rate!
-                        self.currencyDict["CAD"] = c
-                    case "CHF":
-                        let c:Currency  = self.currencyDict["CHF"]!
-                        c.rate = rate!
-                        self.currencyDict["CHF"] = c
-                    case "TRY":
-                        let c:Currency  = self.currencyDict["TRY"]!
-                        c.rate = rate!
-                        self.currencyDict["TRY"] = c
-                    case "NOK":
-                        let c:Currency  = self.currencyDict["NOK"]!
-                        c.rate = rate!
-                        self.currencyDict["NOK"] = c
-                    default:
-                        ()
+                    for i in 1 ..< self.currencyArray.count {
+                        if self.currencyArray[i].name == name {
+                            self.currencyArray[i].rate = rate!
+                            DispatchQueue.main.async {
+                                let euro = Double(self.baseTextField.text!)
+                                let result: Double = euro! * self.currencyArray[i].rate
+                                
+                                self.valueLabelCollection[i-1].text = String(format: "%.02f", result)
+                            }
+                        }
                     }
-                    
-                    /*
-                     let c:Currency = Currency(name: name, rate: rate!, flag: flag, symbol: symbol)!
-                     self.currencyDict[name] = c
-                     */
                 }
                 
             } catch  {
@@ -371,8 +298,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
             DispatchQueue.main.async {
                 self.lastUpdatedDate = Date()
                 self.lastUpdatedDateLabel.text = self.dateformatter.string(from: self.lastUpdatedDate)
-                self.baseTextField.text = "1"
-                self.convert(self)
             }
             
         }
@@ -380,52 +305,17 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     }
     
     @IBAction func convert(_ sender: Any) {
-        var resultGBP = 0.0
-        var resultUSD = 0.0
-        var resultPLN = 0.0
-        var resultAUD = 0.0
-        var resultCAD = 0.0
-        var resultCHF = 0.0
-        var resultTRY = 0.0
-        var resultNOK = 0.0
-        
-        if let euro = Double(baseTextField.text!) {
-            convertValue = euro
-            if let gbp = self.currencyDict["GBP"] {
-                resultGBP = convertValue * gbp.rate
-            }
-            if let usd = self.currencyDict["USD"] {
-                resultUSD = convertValue * usd.rate
-            }
-            if let pln = self.currencyDict["PLN"] {
-                resultPLN = convertValue * pln.rate
-            }
-            if let aud = self.currencyDict["AUD"] {
-                resultAUD = convertValue * aud.rate
-            }
-            if let cad = self.currencyDict["CAD"] {
-                resultCAD = convertValue * cad.rate
-            }
-            if let chf = self.currencyDict["CHF"] {
-                resultCHF = convertValue * chf.rate
-            }
-            if let trY = self.currencyDict["TRY"] {
-                resultTRY = convertValue * trY.rate
-            }
-            if let nok = self.currencyDict["NOK"] {
-                resultNOK = convertValue * nok.rate
+        for i in 0 ..< self.valueLabelCollection.count {
+            let selectedRow = self.basePicker.selectedRow(inComponent: 0)
+            let convertValue = Double(self.baseTextField.text!)
+            if selectedRow > i {
+                let result: Double = convertValue! * self.currencyArray[i].rate * baseMultiplier
+                self.valueLabelCollection[i].text = String(format: "%.02f", result)
+            } else {
+                let result: Double = convertValue! * self.currencyArray[i + 1].rate * baseMultiplier
+                self.valueLabelCollection[i].text = String(format: "%.02f", result)
             }
         }
-        
-        gbpValueLabel.text = String(format: "%.02f", resultGBP)
-        usdValueLabel.text = String(format: "%.02f", resultUSD)
-        plnValueLabel.text = String(format: "%.02f", resultPLN)
-        audValueLabel.text = String(format: "%.02f", resultAUD)
-        cadValueLabel.text = String(format: "%.02f", resultCAD)
-        chfValueLabel.text = String(format: "%.02f", resultCHF)
-        tryValueLabel.text = String(format: "%.02f", resultTRY)
-        nokValueLabel.text = String(format: "%.02f", resultNOK)
-
     }
 }
 
