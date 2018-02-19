@@ -37,6 +37,12 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jbW-h3-hM9" userLabel="topScrollView">
                                 <rect key="frame" x="0.0" y="80.333333333333314" width="414" height="537.66666666666674"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PbO-k7-e0S" userLabel="Eur Symbol Label">
+                                        <rect key="frame" x="127.00000000000001" y="-0.3333333333333286" width="18.666666666666671" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAL-nk-MBC" userLabel="Eur Value Label">
                                         <rect key="frame" x="166.33333333333334" y="0.0" width="81.666666666666657" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
@@ -67,14 +73,14 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rnW-s6-DIE" userLabel="Usd Value Label">
-                                        <rect key="frame" x="166.33333333333334" y="112" width="81.666666666666657" height="36"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YW7-Wj-rqE" userLabel="Usd Symbol Label">
+                                        <rect key="frame" x="127.66666666666667" y="112" width="18.666666666666671" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YW7-Wj-rqE" userLabel="Usd Symbol Label">
-                                        <rect key="frame" x="127.66666666666667" y="112" width="18.666666666666671" height="36"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rnW-s6-DIE" userLabel="Usd Value Label">
+                                        <rect key="frame" x="166" y="111.66666666666669" width="81.666666666666686" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -85,14 +91,14 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QhO-eY-FL6" userLabel="Pln Value Label">
-                                        <rect key="frame" x="166.33333333333334" y="168" width="81.666666666666657" height="36"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="zł" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y4j-Bj-11G" userLabel="Pln Symbol Label">
+                                        <rect key="frame" x="124.99999999999999" y="168" width="21.333333333333329" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="zł" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y4j-Bj-11G" userLabel="Pln Symbol Label">
-                                        <rect key="frame" x="124.99999999999999" y="168" width="21.333333333333329" height="36"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QhO-eY-FL6" userLabel="Pln Value Label">
+                                        <rect key="frame" x="166" y="167.66666666666669" width="81.666666666666686" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -103,14 +109,14 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PxL-CH-DcD" userLabel="Aud Value Label">
-                                        <rect key="frame" x="166.33333333333334" y="224" width="81.666666666666657" height="36"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NSV-Jz-tPh" userLabel="Aud Symbol Label">
+                                        <rect key="frame" x="108.33333333333333" y="224" width="37.999999999999986" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NSV-Jz-tPh" userLabel="Aud Symbol Label">
-                                        <rect key="frame" x="108.33333333333333" y="224" width="37.999999999999986" height="36"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PxL-CH-DcD" userLabel="Aud Value Label">
+                                        <rect key="frame" x="166" y="223.66666666666669" width="81.666666666666686" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -121,14 +127,14 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YMr-bk-LwX" userLabel="Cad Value Label">
-                                        <rect key="frame" x="166.33333333333334" y="280" width="81.666666666666657" height="36"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ZN-oJ-xP2" userLabel="Cad Symbol Label">
+                                        <rect key="frame" x="106.66666666666667" y="280" width="39.666666666666671" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ZN-oJ-xP2" userLabel="Cad Symbol Label">
-                                        <rect key="frame" x="106.66666666666667" y="280" width="39.666666666666671" height="36"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YMr-bk-LwX" userLabel="Cad Value Label">
+                                        <rect key="frame" x="166" y="279.66666666666669" width="81.666666666666686" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -139,14 +145,14 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwD-hb-dPo" userLabel="CHf Value Label">
-                                        <rect key="frame" x="166.33333333333334" y="336" width="81.666666666666657" height="36"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CHf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9o-aS-gM7" userLabel="CHf Symbol Label">
+                                        <rect key="frame" x="94.333333333333329" y="336" width="51.999999999999986" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CHf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9o-aS-gM7" userLabel="CHf Symbol Label">
-                                        <rect key="frame" x="94.333333333333329" y="336" width="51.999999999999986" height="36"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwD-hb-dPo" userLabel="CHf Value Label">
+                                        <rect key="frame" x="166" y="335.66666666666669" width="81.666666666666686" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -157,14 +163,14 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FcM-R4-FO7" userLabel="Try Value Label">
-                                        <rect key="frame" x="166.33333333333334" y="392" width="81.666666666666657" height="36"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="₺" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gBs-fk-Rha" userLabel="Try Symbol Label">
+                                        <rect key="frame" x="127.66666666666667" y="392" width="18.666666666666671" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="₺" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gBs-fk-Rha" userLabel="Try Symbol Label">
-                                        <rect key="frame" x="127.66666666666667" y="392" width="18.666666666666671" height="36"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FcM-R4-FO7" userLabel="Try Value Label">
+                                        <rect key="frame" x="166" y="391.66666666666669" width="81.666666666666686" height="36"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -175,40 +181,15 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T2P-ag-ChB" userLabel="Nok Value Label">
-                                        <rect key="frame" x="166.33333333333334" y="448.00000000000006" width="81.666666666666657" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="kr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2rG-em-tE0" userLabel="Nok Symbol Label">
-                                        <rect key="frame" x="121.66666666666667" y="448.00000000000006" width="24.666666666666671" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FLAG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lzb-HG-9nh" userLabel="Nok Flag Label">
-                                        <rect key="frame" x="268" y="448.00000000000006" width="72.666666666666686" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PbO-k7-e0S" userLabel="Eur Symbol Label">
-                                        <rect key="frame" x="127.66666666666667" y="0.0" width="18.666666666666671" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="pfu-Cn-imy" secondAttribute="trailing" id="0kV-Fu-NKp"/>
                                     <constraint firstItem="qwD-hb-dPo" firstAttribute="left" secondItem="n9o-aS-gM7" secondAttribute="right" constant="20" id="0sM-qb-r2c"/>
                                     <constraint firstAttribute="bottom" secondItem="stZ-Tv-mCy" secondAttribute="bottom" constant="482" id="2Gd-3G-ip9"/>
                                     <constraint firstItem="3Th-pN-ik4" firstAttribute="leading" secondItem="rnW-s6-DIE" secondAttribute="trailing" constant="20" id="2HR-sb-Msg"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Lzb-HG-9nh" secondAttribute="trailing" id="2iP-Z4-hX5"/>
                                     <constraint firstItem="7NK-3k-gpn" firstAttribute="top" secondItem="6el-nU-b9F" secondAttribute="bottom" constant="20" id="3Yn-za-4Ru"/>
+                                    <constraint firstAttribute="bottom" secondItem="FcM-R4-FO7" secondAttribute="bottom" constant="109.66666666666674" id="4DX-PN-1Vf"/>
                                     <constraint firstItem="QhO-eY-FL6" firstAttribute="leading" secondItem="y4j-Bj-11G" secondAttribute="trailing" constant="20" id="66u-ko-9gZ"/>
-                                    <constraint firstItem="2rG-em-tE0" firstAttribute="top" secondItem="gBs-fk-Rha" secondAttribute="bottom" constant="20" id="6IG-eB-fa2"/>
                                     <constraint firstItem="qwD-hb-dPo" firstAttribute="centerX" secondItem="jbW-h3-hM9" secondAttribute="centerX" id="6pc-25-sDu"/>
                                     <constraint firstItem="stZ-Tv-mCy" firstAttribute="top" secondItem="YGi-2e-wao" secondAttribute="bottom" constant="20.000000000000014" id="71O-Z2-pBy"/>
                                     <constraint firstItem="NSV-Jz-tPh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jbW-h3-hM9" secondAttribute="leading" id="7AE-Np-sN7"/>
@@ -216,7 +197,6 @@
                                     <constraint firstItem="t17-57-VUh" firstAttribute="top" secondItem="3Th-pN-ik4" secondAttribute="bottom" constant="20" id="9V1-Dc-hKr"/>
                                     <constraint firstItem="6el-nU-b9F" firstAttribute="top" secondItem="ByY-9e-Tjg" secondAttribute="bottom" constant="20" id="9xc-ck-fq0"/>
                                     <constraint firstItem="PxL-CH-DcD" firstAttribute="left" secondItem="NSV-Jz-tPh" secondAttribute="right" constant="20" id="AF5-Mh-BK6"/>
-                                    <constraint firstItem="Lzb-HG-9nh" firstAttribute="leading" secondItem="T2P-ag-ChB" secondAttribute="trailing" constant="20" id="AFS-sG-9EP"/>
                                     <constraint firstItem="QhO-eY-FL6" firstAttribute="centerX" secondItem="jbW-h3-hM9" secondAttribute="centerX" id="Azf-KK-wDO"/>
                                     <constraint firstItem="y4j-Bj-11G" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jbW-h3-hM9" secondAttribute="leading" id="BI4-1G-9kh"/>
                                     <constraint firstItem="rnW-s6-DIE" firstAttribute="centerX" secondItem="jbW-h3-hM9" secondAttribute="centerX" id="BIN-OI-4pu"/>
@@ -231,7 +211,6 @@
                                     <constraint firstItem="YMr-bk-LwX" firstAttribute="leading" secondItem="0ZN-oJ-xP2" secondAttribute="trailing" constant="20" id="Kgd-6S-VO8"/>
                                     <constraint firstItem="n9o-aS-gM7" firstAttribute="top" secondItem="0ZN-oJ-xP2" secondAttribute="bottom" constant="20" id="L1Z-Dy-2os"/>
                                     <constraint firstItem="gBs-fk-Rha" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jbW-h3-hM9" secondAttribute="leading" id="Lev-QF-BRZ"/>
-                                    <constraint firstAttribute="bottom" secondItem="2rG-em-tE0" secondAttribute="bottom" constant="110" id="Lk3-eW-L1V"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7NK-3k-gpn" secondAttribute="trailing" id="Lnk-O8-hfF"/>
                                     <constraint firstItem="WAL-nk-MBC" firstAttribute="centerX" secondItem="jbW-h3-hM9" secondAttribute="centerX" id="M1r-k7-DN6"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="YGi-2e-wao" secondAttribute="trailing" id="MG1-6H-aOQ"/>
@@ -240,23 +219,17 @@
                                     <constraint firstItem="FcM-R4-FO7" firstAttribute="left" secondItem="gBs-fk-Rha" secondAttribute="right" constant="20" id="Owb-bQ-Ave"/>
                                     <constraint firstItem="pfu-Cn-imy" firstAttribute="leading" secondItem="FcM-R4-FO7" secondAttribute="trailing" constant="20" id="Pkd-FZ-z6b"/>
                                     <constraint firstItem="ByY-9e-Tjg" firstAttribute="leading" secondItem="PxL-CH-DcD" secondAttribute="trailing" constant="20" id="Qah-4k-6PI"/>
-                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="T2P-ag-ChB" secondAttribute="bottom" constant="20" id="R0Z-mM-4DB"/>
                                     <constraint firstItem="gBs-fk-Rha" firstAttribute="top" secondItem="n9o-aS-gM7" secondAttribute="bottom" constant="20" id="SGy-eX-dkB"/>
-                                    <constraint firstItem="2rG-em-tE0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jbW-h3-hM9" secondAttribute="leading" id="SdG-MU-aiI"/>
-                                    <constraint firstItem="T2P-ag-ChB" firstAttribute="left" secondItem="2rG-em-tE0" secondAttribute="right" constant="20" id="Trg-Vr-ahQ"/>
                                     <constraint firstItem="NSV-Jz-tPh" firstAttribute="top" secondItem="y4j-Bj-11G" secondAttribute="bottom" constant="20" id="Ty8-7C-QMv"/>
                                     <constraint firstItem="qwD-hb-dPo" firstAttribute="top" secondItem="YMr-bk-LwX" secondAttribute="bottom" constant="20" id="Ucr-dh-LIB"/>
-                                    <constraint firstItem="T2P-ag-ChB" firstAttribute="top" secondItem="FcM-R4-FO7" secondAttribute="bottom" constant="20" id="UxB-zP-guL"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6el-nU-b9F" secondAttribute="trailing" id="WSZ-NY-Yjo"/>
                                     <constraint firstItem="stZ-Tv-mCy" firstAttribute="leading" secondItem="Cox-tm-tbS" secondAttribute="trailing" constant="20" id="XHl-fq-MVC"/>
                                     <constraint firstItem="YGi-2e-wao" firstAttribute="top" secondItem="jbW-h3-hM9" secondAttribute="top" id="Zeg-6T-8Wf"/>
                                     <constraint firstItem="rnW-s6-DIE" firstAttribute="top" secondItem="Cox-tm-tbS" secondAttribute="bottom" constant="20" id="cQo-WI-2lm"/>
                                     <constraint firstItem="iMA-gM-ejh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jbW-h3-hM9" secondAttribute="leading" id="cfx-pk-9Qx"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="stZ-Tv-mCy" secondAttribute="trailing" id="dK2-5S-DNj"/>
-                                    <constraint firstItem="Lzb-HG-9nh" firstAttribute="top" secondItem="pfu-Cn-imy" secondAttribute="bottom" constant="20" id="dQw-Ak-O01"/>
                                     <constraint firstItem="6el-nU-b9F" firstAttribute="left" secondItem="YMr-bk-LwX" secondAttribute="right" constant="20" id="e6s-vK-7yH"/>
                                     <constraint firstItem="WAL-nk-MBC" firstAttribute="top" secondItem="jbW-h3-hM9" secondAttribute="top" id="eDj-OT-Prq"/>
-                                    <constraint firstItem="T2P-ag-ChB" firstAttribute="centerX" secondItem="jbW-h3-hM9" secondAttribute="centerX" id="f04-i6-4nw"/>
                                     <constraint firstItem="YMr-bk-LwX" firstAttribute="centerX" secondItem="jbW-h3-hM9" secondAttribute="centerX" id="fSc-KV-EyJ"/>
                                     <constraint firstItem="PxL-CH-DcD" firstAttribute="top" secondItem="QhO-eY-FL6" secondAttribute="bottom" constant="20" id="g89-sk-fXS"/>
                                     <constraint firstItem="7NK-3k-gpn" firstAttribute="leading" secondItem="qwD-hb-dPo" secondAttribute="trailing" constant="20" id="gvt-nz-QM6"/>
@@ -267,8 +240,6 @@
                                     <constraint firstItem="0ZN-oJ-xP2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jbW-h3-hM9" secondAttribute="leading" id="n3t-TK-ZQ1"/>
                                     <constraint firstItem="YW7-Wj-rqE" firstAttribute="top" secondItem="iMA-gM-ejh" secondAttribute="bottom" constant="20" id="nOA-yL-toT"/>
                                     <constraint firstItem="0ZN-oJ-xP2" firstAttribute="top" secondItem="NSV-Jz-tPh" secondAttribute="bottom" constant="20" id="oNO-EP-SUZ"/>
-                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="2rG-em-tE0" secondAttribute="bottom" id="oYA-XZ-mEw"/>
-                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Lzb-HG-9nh" secondAttribute="bottom" id="oey-R3-I3b"/>
                                     <constraint firstItem="WAL-nk-MBC" firstAttribute="left" secondItem="PbO-k7-e0S" secondAttribute="right" constant="20" id="pef-Kd-X5p"/>
                                     <constraint firstItem="YGi-2e-wao" firstAttribute="leading" secondItem="WAL-nk-MBC" secondAttribute="trailing" constant="20" id="q2q-T1-QlP"/>
                                     <constraint firstItem="Cox-tm-tbS" firstAttribute="left" secondItem="iMA-gM-ejh" secondAttribute="right" constant="20" id="qaH-q8-nQo"/>
@@ -380,33 +351,30 @@
                         <outlet property="bottomView" destination="2DM-84-dyW" id="ws3-DL-Wc4"/>
                         <outlet property="lastUpdatedDateLabel" destination="896-eX-wDg" id="zh4-Be-xbj"/>
                         <outlet property="topScrollView" destination="jbW-h3-hM9" id="zeM-js-I39"/>
-                        <outletCollection property="symbolLabelCollection" destination="PbO-k7-e0S" collectionClass="NSMutableArray" id="lua-od-wVw"/>
-                        <outletCollection property="symbolLabelCollection" destination="iMA-gM-ejh" collectionClass="NSMutableArray" id="yYb-QY-ULh"/>
-                        <outletCollection property="symbolLabelCollection" destination="YW7-Wj-rqE" collectionClass="NSMutableArray" id="tFY-By-5fi"/>
-                        <outletCollection property="symbolLabelCollection" destination="y4j-Bj-11G" collectionClass="NSMutableArray" id="PvA-NQ-sNp"/>
-                        <outletCollection property="symbolLabelCollection" destination="NSV-Jz-tPh" collectionClass="NSMutableArray" id="UoV-Vn-pX0"/>
-                        <outletCollection property="symbolLabelCollection" destination="0ZN-oJ-xP2" collectionClass="NSMutableArray" id="h2s-gP-nM0"/>
-                        <outletCollection property="symbolLabelCollection" destination="n9o-aS-gM7" collectionClass="NSMutableArray" id="E0t-uF-8rM"/>
-                        <outletCollection property="symbolLabelCollection" destination="gBs-fk-Rha" collectionClass="NSMutableArray" id="o03-0c-f5o"/>
-                        <outletCollection property="symbolLabelCollection" destination="2rG-em-tE0" collectionClass="NSMutableArray" id="c4S-SJ-AiT"/>
-                        <outletCollection property="valueLabelCollection" destination="WAL-nk-MBC" collectionClass="NSMutableArray" id="3mU-2e-4SQ"/>
-                        <outletCollection property="valueLabelCollection" destination="Cox-tm-tbS" collectionClass="NSMutableArray" id="ac9-r1-869"/>
-                        <outletCollection property="valueLabelCollection" destination="rnW-s6-DIE" collectionClass="NSMutableArray" id="yjP-ZD-PzI"/>
-                        <outletCollection property="valueLabelCollection" destination="QhO-eY-FL6" collectionClass="NSMutableArray" id="9va-QF-CNt"/>
-                        <outletCollection property="valueLabelCollection" destination="PxL-CH-DcD" collectionClass="NSMutableArray" id="K4a-F4-vWV"/>
-                        <outletCollection property="valueLabelCollection" destination="YMr-bk-LwX" collectionClass="NSMutableArray" id="0Rm-82-nZ9"/>
-                        <outletCollection property="valueLabelCollection" destination="qwD-hb-dPo" collectionClass="NSMutableArray" id="nJm-HW-Cha"/>
-                        <outletCollection property="valueLabelCollection" destination="FcM-R4-FO7" collectionClass="NSMutableArray" id="tPL-R8-w1i"/>
-                        <outletCollection property="valueLabelCollection" destination="T2P-ag-ChB" collectionClass="NSMutableArray" id="jex-F8-0Cx"/>
-                        <outletCollection property="flagLabelCollection" destination="YGi-2e-wao" collectionClass="NSMutableArray" id="lP3-s1-o3v"/>
-                        <outletCollection property="flagLabelCollection" destination="stZ-Tv-mCy" collectionClass="NSMutableArray" id="YL7-tH-kRK"/>
-                        <outletCollection property="flagLabelCollection" destination="3Th-pN-ik4" collectionClass="NSMutableArray" id="49S-2R-DXv"/>
-                        <outletCollection property="flagLabelCollection" destination="t17-57-VUh" collectionClass="NSMutableArray" id="VBR-I7-Mdd"/>
-                        <outletCollection property="flagLabelCollection" destination="ByY-9e-Tjg" collectionClass="NSMutableArray" id="8QL-Yf-aKP"/>
-                        <outletCollection property="flagLabelCollection" destination="6el-nU-b9F" collectionClass="NSMutableArray" id="A4a-pg-4nI"/>
-                        <outletCollection property="flagLabelCollection" destination="7NK-3k-gpn" collectionClass="NSMutableArray" id="d4x-Wc-jUA"/>
-                        <outletCollection property="flagLabelCollection" destination="pfu-Cn-imy" collectionClass="NSMutableArray" id="0o0-9o-icc"/>
-                        <outletCollection property="flagLabelCollection" destination="Lzb-HG-9nh" collectionClass="NSMutableArray" id="ntc-Vo-qaJ"/>
+                        <outletCollection property="symbolLabelCollection" destination="PbO-k7-e0S" collectionClass="NSMutableArray" id="HAE-xd-kkC"/>
+                        <outletCollection property="symbolLabelCollection" destination="iMA-gM-ejh" collectionClass="NSMutableArray" id="AG5-UR-lVE"/>
+                        <outletCollection property="symbolLabelCollection" destination="YW7-Wj-rqE" collectionClass="NSMutableArray" id="2xd-Fn-xF0"/>
+                        <outletCollection property="symbolLabelCollection" destination="y4j-Bj-11G" collectionClass="NSMutableArray" id="zlO-Yy-AHX"/>
+                        <outletCollection property="symbolLabelCollection" destination="NSV-Jz-tPh" collectionClass="NSMutableArray" id="f5i-Kn-5ck"/>
+                        <outletCollection property="symbolLabelCollection" destination="0ZN-oJ-xP2" collectionClass="NSMutableArray" id="YYW-HS-t9j"/>
+                        <outletCollection property="symbolLabelCollection" destination="n9o-aS-gM7" collectionClass="NSMutableArray" id="3or-U3-gzy"/>
+                        <outletCollection property="symbolLabelCollection" destination="gBs-fk-Rha" collectionClass="NSMutableArray" id="lln-ua-oJy"/>
+                        <outletCollection property="valueLabelCollection" destination="WAL-nk-MBC" collectionClass="NSMutableArray" id="nCg-4j-FqJ"/>
+                        <outletCollection property="valueLabelCollection" destination="Cox-tm-tbS" collectionClass="NSMutableArray" id="JTw-Pf-uVz"/>
+                        <outletCollection property="valueLabelCollection" destination="rnW-s6-DIE" collectionClass="NSMutableArray" id="vXS-b8-G5d"/>
+                        <outletCollection property="valueLabelCollection" destination="QhO-eY-FL6" collectionClass="NSMutableArray" id="ukh-GC-cp8"/>
+                        <outletCollection property="valueLabelCollection" destination="PxL-CH-DcD" collectionClass="NSMutableArray" id="Dk2-CD-OQH"/>
+                        <outletCollection property="valueLabelCollection" destination="YMr-bk-LwX" collectionClass="NSMutableArray" id="hTi-IV-oz6"/>
+                        <outletCollection property="valueLabelCollection" destination="qwD-hb-dPo" collectionClass="NSMutableArray" id="qEx-5w-h8b"/>
+                        <outletCollection property="valueLabelCollection" destination="FcM-R4-FO7" collectionClass="NSMutableArray" id="WAf-gP-n9A"/>
+                        <outletCollection property="flagLabelCollection" destination="YGi-2e-wao" collectionClass="NSMutableArray" id="aoB-ha-XLn"/>
+                        <outletCollection property="flagLabelCollection" destination="stZ-Tv-mCy" collectionClass="NSMutableArray" id="Poq-jG-hdF"/>
+                        <outletCollection property="flagLabelCollection" destination="3Th-pN-ik4" collectionClass="NSMutableArray" id="bXL-sr-quY"/>
+                        <outletCollection property="flagLabelCollection" destination="t17-57-VUh" collectionClass="NSMutableArray" id="6JK-B4-GUi"/>
+                        <outletCollection property="flagLabelCollection" destination="ByY-9e-Tjg" collectionClass="NSMutableArray" id="Maa-66-ygd"/>
+                        <outletCollection property="flagLabelCollection" destination="6el-nU-b9F" collectionClass="NSMutableArray" id="aIn-GS-KFJ"/>
+                        <outletCollection property="flagLabelCollection" destination="7NK-3k-gpn" collectionClass="NSMutableArray" id="C9F-bp-UMK"/>
+                        <outletCollection property="flagLabelCollection" destination="pfu-Cn-imy" collectionClass="NSMutableArray" id="XX8-iX-915"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -33,6 +33,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     
     var data: [String] = [String]()
     @IBOutlet weak var basePicker: UIPickerView!
+    var baseMultiplier: Double = 1.00
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,7 +72,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
         baseTextField.delegate = self
         
         self.convert(self)
-        
         self.addDoneButtonOnKeyboard()
     }
     
@@ -89,13 +89,26 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     
     // Catpure the picker view selection. At the moment that he/ she selects something, then it's passed to this func
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
-        alert.message = "Your selection is "+data[row]
-        alert.title = "Selection"
-        
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-        
+        changeCurrencyBase()
+    }
+    
+    func changeCurrencyBase() {
+        let row = self.basePicker.selectedRow(inComponent: 0)
+        self.baseCurrency = self.currencyArray[row]
+        self.baseMultiplier = 1.00 / baseCurrency.rate
+        self.baseSymbol.text = self.baseCurrency.symbol
+        let convertValue = Double(self.baseTextField.text!)
+        for i in 0 ..< flagLabelCollection.count {
+            if row > i {
+                symbolLabelCollection[i].text = currencyArray[i].symbol
+                valueLabelCollection[i].text = String(format: "%.02f",currencyArray[i].rate * baseMultiplier * convertValue!)
+                flagLabelCollection[i].text = currencyArray[i].flag
+            } else {
+                symbolLabelCollection[i].text = currencyArray[i+1].symbol
+                valueLabelCollection[i].text = String(format: "%.02f",currencyArray[i+1].rate * baseMultiplier * convertValue!)
+                flagLabelCollection[i].text = currencyArray[i+1].flag
+            }
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -207,15 +220,18 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     }
     
     func displayCurrencyInfo() {
-        for i in 0 ..< currencyArray.count {
-            symbolLabelCollection[i].text = currencyArray[i].symbol
-            valueLabelCollection[i].text = String(format: "%.02f",currencyArray[i].rate)
-            flagLabelCollection[i].text = currencyArray[i].flag
+        for i in 1 ..< currencyArray.count {
+            symbolLabelCollection[i-1].text = currencyArray[i].symbol
+            valueLabelCollection[i-1].text = String(format: "%.02f",currencyArray[i].rate)
+            flagLabelCollection[i-1].text = currencyArray[i].flag
         }
     }
     
     
     @IBAction func refreshCurrencies(_ sender: UIButton) {
+        self.baseTextField.text = "1"
+        self.basePicker.selectRow(0, inComponent: 0, animated: false)
+        changeCurrencyBase()
         customActivityIndicatory(self.view, startAnimate: true)
         getConvertionRates()
         customActivityIndicatory(self.view, startAnimate: false)
@@ -262,13 +278,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
                     let name = String(describing: rate.key)
                     let rate = (rate.value as? NSNumber)?.doubleValue
                     
-                    for i in 0 ..< self.currencyArray.count {
+                    for i in 1 ..< self.currencyArray.count {
                         if self.currencyArray[i].name == name {
                             self.currencyArray[i].rate = rate!
                             DispatchQueue.main.async {
                                 let euro = Double(self.baseTextField.text!)
                                 let result: Double = euro! * self.currencyArray[i].rate
-                                self.valueLabelCollection[i].text = String(format: "%.02f", result)
+                                
+                                self.valueLabelCollection[i-1].text = String(format: "%.02f", result)
                             }
                         }
                     }
@@ -281,7 +298,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
             DispatchQueue.main.async {
                 self.lastUpdatedDate = Date()
                 self.lastUpdatedDateLabel.text = self.dateformatter.string(from: self.lastUpdatedDate)
-                self.baseTextField.text = "1"
             }
             
         }
@@ -289,10 +305,16 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     }
     
     @IBAction func convert(_ sender: Any) {
-        for i in 0 ..< self.currencyArray.count {
-            let euro = Double(self.baseTextField.text!)
-            let result: Double = euro! * self.currencyArray[i].rate
-            self.valueLabelCollection[i].text = String(format: "%.02f", result)
+        for i in 0 ..< self.valueLabelCollection.count {
+            let selectedRow = self.basePicker.selectedRow(inComponent: 0)
+            let convertValue = Double(self.baseTextField.text!)
+            if selectedRow > i {
+                let result: Double = convertValue! * self.currencyArray[i].rate * baseMultiplier
+                self.valueLabelCollection[i].text = String(format: "%.02f", result)
+            } else {
+                let result: Double = convertValue! * self.currencyArray[i + 1].rate * baseMultiplier
+                self.valueLabelCollection[i].text = String(format: "%.02f", result)
+            }
         }
     }
 }
