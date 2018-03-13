@@ -307,7 +307,11 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     @IBAction func convert(_ sender: Any) {
         for i in 0 ..< self.valueLabelCollection.count {
             let selectedRow = self.basePicker.selectedRow(inComponent: 0)
-            let convertValue = Double(self.baseTextField.text!)
+            var convertValue = Double(self.baseTextField.text!)
+            if self.baseTextField.text == "" {
+                convertValue = 1;
+                self.baseTextField.text = "1"
+            }
             if selectedRow > i {
                 let result: Double = convertValue! * self.currencyArray[i].rate * baseMultiplier
                 self.valueLabelCollection[i].text = String(format: "%.02f", result)
