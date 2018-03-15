@@ -7,24 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		131548FA2038C0730098DDFC /* launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 131548F92038C0730098DDFC /* launch.png */; };
+		1376DA532059A733008A7738 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1376DA522059A733008A7738 /* Launch Screen.storyboard */; };
+		1376DA652059B57B008A7738 /* launchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 1376DA642059B57B008A7738 /* launchScreen.png */; };
 		FF66C5521FA34F4D00E9354E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF66C5511FA34F4D00E9354E /* AppDelegate.swift */; };
 		FF66C5541FA34F4D00E9354E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF66C5531FA34F4D00E9354E /* ViewController.swift */; };
 		FF66C5571FA34F4D00E9354E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF66C5551FA34F4D00E9354E /* Main.storyboard */; };
 		FF66C5591FA34F4D00E9354E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF66C5581FA34F4D00E9354E /* Assets.xcassets */; };
-		FF66C55C1FA34F4D00E9354E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF66C55A1FA34F4D00E9354E /* LaunchScreen.storyboard */; };
 		FF66C5641FA351CE00E9354E /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF66C5631FA351CE00E9354E /* Currency.swift */; };
 		FF66C5661FA3531400E9354E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FF66C5651FA3531400E9354E /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		131548F92038C0730098DDFC /* launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch.png; sourceTree = "<group>"; };
+		1376DA522059A733008A7738 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		1376DA642059B57B008A7738 /* launchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchScreen.png; sourceTree = "<group>"; };
 		FF66C54E1FA34F4D00E9354E /* Currency.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Currency.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF66C5511FA34F4D00E9354E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF66C5531FA34F4D00E9354E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FF66C5561FA34F4D00E9354E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FF66C5581FA34F4D00E9354E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		FF66C55B1FA34F4D00E9354E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FF66C55D1FA34F4D00E9354E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FF66C5631FA351CE00E9354E /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		FF66C5651FA3531400E9354E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
@@ -46,7 +46,7 @@
 			children = (
 				FF66C5501FA34F4D00E9354E /* Currency */,
 				FF66C54F1FA34F4D00E9354E /* Products */,
-				131548F92038C0730098DDFC /* launch.png */,
+				1376DA642059B57B008A7738 /* launchScreen.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -61,12 +61,12 @@
 		FF66C5501FA34F4D00E9354E /* Currency */ = {
 			isa = PBXGroup;
 			children = (
+				1376DA522059A733008A7738 /* Launch Screen.storyboard */,
 				FF66C5631FA351CE00E9354E /* Currency.swift */,
 				FF66C5511FA34F4D00E9354E /* AppDelegate.swift */,
 				FF66C5531FA34F4D00E9354E /* ViewController.swift */,
 				FF66C5551FA34F4D00E9354E /* Main.storyboard */,
 				FF66C5581FA34F4D00E9354E /* Assets.xcassets */,
-				FF66C55A1FA34F4D00E9354E /* LaunchScreen.storyboard */,
 				FF66C55D1FA34F4D00E9354E /* Info.plist */,
 				FF66C5651FA3531400E9354E /* README.md */,
 			);
@@ -132,10 +132,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF66C55C1FA34F4D00E9354E /* LaunchScreen.storyboard in Resources */,
-				131548FA2038C0730098DDFC /* launch.png in Resources */,
 				FF66C5591FA34F4D00E9354E /* Assets.xcassets in Resources */,
 				FF66C5661FA3531400E9354E /* README.md in Resources */,
+				1376DA652059B57B008A7738 /* launchScreen.png in Resources */,
+				1376DA532059A733008A7738 /* Launch Screen.storyboard in Resources */,
 				FF66C5571FA34F4D00E9354E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -162,14 +162,6 @@
 				FF66C5561FA34F4D00E9354E /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		FF66C55A1FA34F4D00E9354E /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FF66C55B1FA34F4D00E9354E /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -293,7 +285,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ie.wit.Currency;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -308,7 +300,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ie.wit.Currency;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
