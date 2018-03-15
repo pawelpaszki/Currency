@@ -10,7 +10,6 @@ import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    //MARK Model holders
     var currencyDict:Dictionary = [String:Currency]()
     var currencyArray = [Currency]()
     var baseCurrency:Currency = Currency.init(name:"EUR", rate:1, flag:"🇪🇺", symbol:"€")!
@@ -40,7 +39,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
         data = ["🇪🇺","🇬🇧","🇺🇸","🇵🇱","🇦🇺","🇨🇦","🇨🇭","🇹🇷","🇳🇴"]
         self.basePicker.delegate = self
         self.basePicker.dataSource = self
-        // Do any additional setup after loading the view, typically from a nib.
+
         NotificationCenter.default.addObserver(
             self,selector: #selector(keyboardWillShowForResizing),
             name:NSNotification.Name.UIKeyboardDidShow,
@@ -48,27 +47,21 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
         NotificationCenter.default.addObserver(self,selector: #selector(keyboardWillHideForResizing),name:NSNotification.Name.UIKeyboardWillHide,
                                                object: nil)
         
-        // create currency dictionary
         self.baseTextField.keyboardType = UIKeyboardType.decimalPad
         self.createCurrencyDictionary()
         
-        // get latest currency values
         getConvertionRates()
         
         convertValue = 1
         
-        // set up base currency screen items
         baseTextField.text = String(format: "%.02f", baseCurrency.rate)
         baseSymbol.text = baseCurrency.symbol
         
-        // set up last updated date
         dateformatter.dateFormat = "dd/MM/yyyy hh:mm a"
         lastUpdatedDateLabel.text = self.dateformatter.string(from: lastUpdatedDate)
         
-        // display currency info
         self.displayCurrencyInfo()
         
-        // setup view mover
         baseTextField.delegate = self
         
         self.convert(self)
@@ -78,16 +71,15 @@ class ViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegat
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-    // The number of rows of data
+
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return data.count
     }
-    // The data to return for the row and component (column), that's being  passed in .
+
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return data[row]
     }
-    
-    // Catpure the picker view selection. At the moment that he/ she selects something, then it's passed to this func
+
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         changeCurrencyBase()
     }
