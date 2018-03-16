@@ -3,6 +3,7 @@
 //  Currency
 //
 //  Created by Robert O'Connor on 18/10/2017.
+//  Edited by Pawel Paszki (last edit - 16/03/2018)
 //  Copyright © 2017 WIT. All rights reserved.
 //
 
