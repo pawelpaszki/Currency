@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1376DA532059A733008A7738 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1376DA522059A733008A7738 /* Launch Screen.storyboard */; };
-		1376DA652059B57B008A7738 /* launchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 1376DA642059B57B008A7738 /* launchScreen.png */; };
+		84715E4C205BC81500F82C0E /* launchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 84715E4B205BC81500F82C0E /* launchScreen.png */; };
 		FF66C5521FA34F4D00E9354E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF66C5511FA34F4D00E9354E /* AppDelegate.swift */; };
 		FF66C5541FA34F4D00E9354E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF66C5531FA34F4D00E9354E /* ViewController.swift */; };
 		FF66C5571FA34F4D00E9354E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF66C5551FA34F4D00E9354E /* Main.storyboard */; };
@@ -19,7 +19,7 @@
 
 /* Begin PBXFileReference section */
 		1376DA522059A733008A7738 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		1376DA642059B57B008A7738 /* launchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchScreen.png; sourceTree = "<group>"; };
+		84715E4B205BC81500F82C0E /* launchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = launchScreen.png; path = ../launchScreen.png; sourceTree = "<group>"; };
 		FF66C54E1FA34F4D00E9354E /* Currency.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Currency.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF66C5511FA34F4D00E9354E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FF66C5531FA34F4D00E9354E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -46,7 +46,7 @@
 			children = (
 				FF66C5501FA34F4D00E9354E /* Currency */,
 				FF66C54F1FA34F4D00E9354E /* Products */,
-				1376DA642059B57B008A7738 /* launchScreen.png */,
+				84715E4B205BC81500F82C0E /* launchScreen.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -134,7 +134,7 @@
 			files = (
 				FF66C5591FA34F4D00E9354E /* Assets.xcassets in Resources */,
 				FF66C5661FA3531400E9354E /* README.md in Resources */,
-				1376DA652059B57B008A7738 /* launchScreen.png in Resources */,
+				84715E4C205BC81500F82C0E /* launchScreen.png in Resources */,
 				1376DA532059A733008A7738 /* Launch Screen.storyboard in Resources */,
 				FF66C5571FA34F4D00E9354E /* Main.storyboard in Resources */,
 			);
